@@ -4,20 +4,61 @@ import java.util.List;
 
 public class ErrorMasterResponse {
     private boolean status;
-    private List<ErrorMaster> result;
-    public boolean isStatus() { return status; }
-    public void setStatus(boolean status) { this.status = status; }
-    public List<ErrorMaster> getResult() { return result; }
-    public void setResult(List<ErrorMaster> result) { this.result = result; }
+    private List<ErrorDtl> errorDtl;
 
-    public static class ErrorMaster {
-        private String code;
-        private String description;
-        public ErrorMaster(){}
-        public ErrorMaster(String code, String description){ this.code = code; this.description = description; }
-        public String getCode() { return code; }
-        public void setCode(String code) { this.code = code; }
-        public String getDescription() { return description; }
-        public void setDescription(String description) { this.description = description; }
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public List<ErrorDtl> getErrorDtl() {
+        return errorDtl;
+    }
+
+    public void setErrorDtl(List<ErrorDtl> errorDtl) {
+        this.errorDtl = errorDtl;
+    }
+
+    // Inner DTO
+    public static class ErrorDtl {
+        private String ERRORCODE;
+        private String ERRORDESC;
+        private int STATELOGCODE;
+        private String FLAG;
+
+        public String getERRORCODE() {
+            return ERRORCODE;
+        }
+
+        public void setERRORCODE(String ERRORCODE) {
+            this.ERRORCODE = ERRORCODE;
+        }
+
+        public String getERRORDESC() {
+            return ERRORDESC;
+        }
+
+        public void setERRORDESC(String ERRORDESC) {
+            this.ERRORDESC = ERRORDESC;
+        }
+
+        public int getSTATELOGCODE() {
+            return STATELOGCODE;
+        }
+
+        public void setSTATELOGCODE(int STATELOGCODE) {
+            this.STATELOGCODE = STATELOGCODE;
+        }
+
+        public String getFLAG() {
+            return FLAG;
+        }
+
+        public void setFLAG(String FLAG) {
+            this.FLAG = FLAG;
+        }
     }
 }

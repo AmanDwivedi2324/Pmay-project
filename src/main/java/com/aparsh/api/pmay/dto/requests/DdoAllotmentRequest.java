@@ -1,7 +1,13 @@
 package com.aparsh.api.pmay.dto.requests;
 
 public class DdoAllotmentRequest {
-    private String ddoCode;
-    public String getDdoCode() { return ddoCode; }
-    public void setDdoCode(String ddoCode) { this.ddoCode = ddoCode; }
+    private String DDOCode; // Request parameter
+
+    public String getDDOCode() {
+        return DDOCode;
+    }
+
+    public void setDDOCode(String DDOCode) {
+        this.DDOCode = DDOCode;
+    }
 }
