@@ -23,16 +23,19 @@ public class IntegrationServiceImpl implements IntegrationService {
 
     @Override
     public StateResponse getState(StateRequest req) {
-        StateResponse resp = new StateResponse();
-        StateResponse.StateResult st = new StateResponse.StateResult();
-        st.setState_Code("UP");
-        st.setState_Name("Uttar Pradesh");
-        st.setShort_Name("UP");
-        st.setLGD_State_Code("09");
-        st.setSt_local_name("उत्तर प्रदेश");
-        resp.setStatus(true);
-        resp.setResult(List.of(st));
-        return resp;
+        StateResponse response = new StateResponse();
+        response.setStatus(true);
+
+        StateResponse.StateResult result = new StateResponse.StateResult();
+        result.setState_Code("06");
+        result.setState_Name("CHANDIGARH");
+        result.setShort_Name("CG");
+        result.setLGD_State_Code("4");
+        result.setLGD_state_name("CHANDIGARH");
+        result.setSt_local_name("CHANDIGARH");
+
+        response.setResult(List.of(result));
+        return response;
     }
 
     @Override
