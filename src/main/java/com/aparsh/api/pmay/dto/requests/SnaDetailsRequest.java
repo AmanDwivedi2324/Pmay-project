@@ -11,3 +11,4 @@ public class SnaDetailsRequest {
         this.CSSSCHEME = CSSSCHEME;
     }
 }
+

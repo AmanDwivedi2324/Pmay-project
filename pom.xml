@@ -9,7 +9,7 @@
 		<version>3.5.7</version>
 		<relativePath />
 	</parent>
-	<groupId>com.aparsh.api</groupId>
+	<groupId>com.sparsh.api</groupId>
 	<artifactId>pmay</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>pmay</name>
@@ -31,10 +31,13 @@
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

@@ -1,100 +1,261 @@
 package com.aparsh.api.pmay.dto.responses;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
+@Setter
+@Getter
 public class AgencyMappingResponse {
 
     private List<AgencyDtl> agencyDtl;
 
-    public List<AgencyDtl> getAgencyDtl() {
-        return agencyDtl;
-    }
+    public AgencyMappingResponse() {}
+    public AgencyMappingResponse(List<AgencyDtl> agencyDtl) { this.agencyDtl = agencyDtl; }
 
-    public void setAgencyDtl(List<AgencyDtl> agencyDtl) {
-        this.agencyDtl = agencyDtl;
-    }
-
+    @Setter
+    @Getter
     public static class AgencyDtl {
+        // getters & setters
         private String Status;
         private String SLSCODE;
         private String NREGAPanchayatCode;
-        private String StateLGDCode;
-        private String StateShortCode;
+        private Integer StateLGDCode;
+        private String StateSchemeCode;
         private String AgencyType;
-        private String ChildAgencyName;
         private String ParentAgencyName;
-        private String NREGABankCode;
-        private String DDOCODE;
-        private String EntryDate;
-        private String TreasuryCode;
+        private String ChildAgencyName;
+        private String NREGAImplAgencyCode;
+        private String ParentAgencyCode;
+        private String NREGABlockCode;
+        private String NREGAStateCode;
+        private Integer DDOCODE;
+        @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+        private LocalDateTime EntryDate;
+        private String TREASCODE;
         private String ChildAgencyCode;
         private String DistrictLGDCode;
         private String PanchayatLGDCode;
-        private String CenterStateCode;
-        private String NREGABankCode2;
-        private String DEPT_NAME;
+        private String CenterSchemeCode;
+        private String NREGADistrictCode;
+        private String TREAS_NAME;
         private String BlockLGDCode;
+        private String DDO_NAME;
         private String RequestType;
 
-        // Getters and Setters
-        public String getStatus() { return Status; }
-        public void setStatus(String status) { Status = status; }
 
-        public String getSLSCODE() { return SLSCODE; }
-        public void setSLSCODE(String SLSCODE) { this.SLSCODE = SLSCODE; }
-
+        @JsonProperty("NREGAPanchayatCode")
         public String getNREGAPanchayatCode() { return NREGAPanchayatCode; }
-        public void setNREGAPanchayatCode(String NREGAPanchayatCode) { this.NREGAPanchayatCode = NREGAPanchayatCode; }
 
-        public String getStateLGDCode() { return StateLGDCode; }
-        public void setStateLGDCode(String stateLGDCode) { StateLGDCode = stateLGDCode; }
+        @JsonProperty("Status")
+        public String getStatus() { return Status; }
 
-        public String getStateShortCode() { return StateShortCode; }
-        public void setStateShortCode(String stateShortCode) { StateShortCode = stateShortCode; }
+        @JsonProperty("SLSCODE")
+        public String getSLSCODE() { return SLSCODE; }
 
+        @JsonProperty("StateLGDCode")
+        public Integer getStateLGDCode() { return StateLGDCode; }
+
+        @JsonProperty("StateSchemeCode")
+        public String getStateSchemeCode() { return StateSchemeCode; }
+
+        @JsonProperty("AgencyType")
         public String getAgencyType() { return AgencyType; }
-        public void setAgencyType(String agencyType) { AgencyType = agencyType; }
 
-        public String getChildAgencyName() { return ChildAgencyName; }
-        public void setChildAgencyName(String childAgencyName) { ChildAgencyName = childAgencyName; }
-
+        @JsonProperty("ParentAgencyName")
         public String getParentAgencyName() { return ParentAgencyName; }
-        public void setParentAgencyName(String parentAgencyName) { ParentAgencyName = parentAgencyName; }
 
-        public String getNREGABankCode() { return NREGABankCode; }
-        public void setNREGABankCode(String NREGABankCode) { this.NREGABankCode = NREGABankCode; }
+        @JsonProperty("ChildAgencyName")
+        public String getChildAgencyName() { return ChildAgencyName; }
 
-        public String getDDOCODE() { return DDOCODE; }
-        public void setDDOCODE(String DDOCODE) { this.DDOCODE = DDOCODE; }
+        @JsonProperty("NREGAImplAgencyCode")
+        public String getNREGAImplAgencyCode() { return NREGAImplAgencyCode; }
 
-        public String getEntryDate() { return EntryDate; }
-        public void setEntryDate(String entryDate) { EntryDate = entryDate; }
+        @JsonProperty("ParentAgencyCode")
+        public String getParentAgencyCode() { return ParentAgencyCode; }
 
-        public String getTreasuryCode() { return TreasuryCode; }
-        public void setTreasuryCode(String treasuryCode) { TreasuryCode = treasuryCode; }
+        @JsonProperty("NREGABlockCode")
+        public String getNREGABlockCode() { return NREGABlockCode; }
 
+        @JsonProperty("NREGAStateCode")
+        public String getNREGAStateCode() { return NREGAStateCode; }
+
+        @JsonProperty("DDOCODE")
+        public Integer getDDOCODE() { return DDOCODE; }
+
+        @JsonProperty("EntryDate")
+        public LocalDateTime getEntryDate() { return EntryDate; }
+
+        @JsonProperty("TREASCODE")
+        public String getTREASCODE() { return TREASCODE; }
+
+        @JsonProperty("ChildAgencyCode")
         public String getChildAgencyCode() { return ChildAgencyCode; }
-        public void setChildAgencyCode(String childAgencyCode) { ChildAgencyCode = childAgencyCode; }
 
+        @JsonProperty("DistrictLGDCode")
         public String getDistrictLGDCode() { return DistrictLGDCode; }
-        public void setDistrictLGDCode(String districtLGDCode) { DistrictLGDCode = districtLGDCode; }
 
+        @JsonProperty("PanchayatLGDCode")
         public String getPanchayatLGDCode() { return PanchayatLGDCode; }
-        public void setPanchayatLGDCode(String panchayatLGDCode) { PanchayatLGDCode = panchayatLGDCode; }
 
-        public String getCenterStateCode() { return CenterStateCode; }
-        public void setCenterStateCode(String centerStateCode) { CenterStateCode = centerStateCode; }
+        @JsonProperty("CenterSchemeCode")
+        public String getCenterSchemeCode() { return CenterSchemeCode; }
 
-        public String getNREGABankCode2() { return NREGABankCode2; }
-        public void setNREGABankCode2(String NREGABankCode2) { this.NREGABankCode2 = NREGABankCode2; }
+        @JsonProperty("NREGADistrictCode")
+        public String getNREGADistrictCode() { return NREGADistrictCode; }
 
-        public String getDEPT_NAME() { return DEPT_NAME; }
-        public void setDEPT_NAME(String DEPT_NAME) { this.DEPT_NAME = DEPT_NAME; }
+        @JsonProperty("TREAS_NAME")
+        public String getTREAS_NAME() { return TREAS_NAME; }
 
+        @JsonProperty("BlockLGDCode")
         public String getBlockLGDCode() { return BlockLGDCode; }
-        public void setBlockLGDCode(String blockLGDCode) { BlockLGDCode = blockLGDCode; }
 
+        @JsonProperty("DDO_NAME")
+        public String getDDO_NAME() { return DDO_NAME; }
+
+        @JsonProperty("RequestType")
         public String getRequestType() { return RequestType; }
-        public void setRequestType(String requestType) { RequestType = requestType; }
+
+
+
+
+        public void setNREGAPanchayatCode(String NREGAPanchayatCode) {
+            this.NREGAPanchayatCode = NREGAPanchayatCode;
+        }
+
+
+        public void setStatus(String status) {
+            Status = status;
+        }
+
+
+        public void setSLSCODE(String SLSCODE) {
+            this.SLSCODE = SLSCODE;
+        }
+
+
+
+        public void setStateLGDCode(Integer stateLGDCode) {
+            StateLGDCode = stateLGDCode;
+        }
+
+
+
+        public void setStateSchemeCode(String stateSchemeCode) {
+            StateSchemeCode = stateSchemeCode;
+        }
+
+
+
+        public void setAgencyType(String agencyType) {
+            AgencyType = agencyType;
+        }
+
+
+
+        public void setParentAgencyName(String parentAgencyName) {
+            ParentAgencyName = parentAgencyName;
+        }
+
+
+        public void setChildAgencyName(String childAgencyName) {
+            ChildAgencyName = childAgencyName;
+        }
+
+
+
+        public void setNREGAImplAgencyCode(String NREGAImplAgencyCode) {
+            this.NREGAImplAgencyCode = NREGAImplAgencyCode;
+        }
+
+
+
+        public void setParentAgencyCode(String parentAgencyCode) {
+            ParentAgencyCode = parentAgencyCode;
+        }
+
+
+
+        public void setNREGABlockCode(String NREGABlockCode) {
+            this.NREGABlockCode = NREGABlockCode;
+        }
+
+
+
+        public void setNREGAStateCode(String NREGAStateCode) {
+            this.NREGAStateCode = NREGAStateCode;
+        }
+
+
+
+        public void setDDOCODE(Integer DDOCODE) {
+            this.DDOCODE = DDOCODE;
+        }
+
+
+
+        public void setEntryDate(LocalDateTime entryDate) {
+            EntryDate = entryDate;
+        }
+
+
+        public void setTREASCODE(String TREASCODE) {
+            this.TREASCODE = TREASCODE;
+        }
+
+
+        public void setChildAgencyCode(String childAgencyCode) {
+            ChildAgencyCode = childAgencyCode;
+        }
+
+
+        public void setDistrictLGDCode(String districtLGDCode) {
+            DistrictLGDCode = districtLGDCode;
+        }
+
+
+
+        public void setPanchayatLGDCode(String panchayatLGDCode) {
+            PanchayatLGDCode = panchayatLGDCode;
+        }
+
+
+
+        public void setCenterSchemeCode(String centerSchemeCode) {
+            CenterSchemeCode = centerSchemeCode;
+        }
+
+
+
+        public void setNREGADistrictCode(String NREGADistrictCode) {
+            this.NREGADistrictCode = NREGADistrictCode;
+        }
+
+
+
+        public void setTREAS_NAME(String TREAS_NAME) {
+            this.TREAS_NAME = TREAS_NAME;
+        }
+
+
+
+        public void setBlockLGDCode(String blockLGDCode) {
+            BlockLGDCode = blockLGDCode;
+        }
+
+
+
+        public void setDDO_NAME(String DDO_NAME) {
+            this.DDO_NAME = DDO_NAME;
+        }
+
+
+        public void setRequestType(String requestType) {
+            RequestType = requestType;
+        }
     }
 }

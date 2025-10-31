@@ -1,8 +1,12 @@
 package com.aparsh.api.pmay.dto.requests;
 
 public class DeductionRequest {
-    private String dummy;
+    private String SLSCODE;
 
-    public String getDummy() { return dummy; }
-    public void setDummy(String dummy) { this.dummy = dummy; }
+    public DeductionRequest() {}
+
+    public DeductionRequest(String SLSCODE) { this.SLSCODE = SLSCODE; }
+
+    public String getSLSCODE() { return SLSCODE; }
+    public void setSLSCODE(String SLSCODE) { this.SLSCODE = SLSCODE; }
 }

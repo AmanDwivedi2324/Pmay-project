@@ -2,6 +2,12 @@ package com.aparsh.api.pmay.service;
 
 import com.aparsh.api.pmay.dto.requests.*;
 import com.aparsh.api.pmay.dto.responses.*;
+import com.aparsh.api.pmay.dto.requests.*;
+import com.aparsh.api.pmay.dto.responses.*;
+import com.aparsh.api.pmay.xml.DscEnrollmentAck;
+import com.aparsh.api.pmay.xml.DscEnrollmentRequest;
+import com.aparsh.api.pmay.xml.FtoAck;
+import com.aparsh.api.pmay.xml.FtoRequest;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
@@ -13,110 +19,11 @@ import java.util.List;
 
 @Service
 public class IntegrationServiceImpl implements IntegrationService {
-
-    private final String DEFAULT_SLSCODE = "UP23";
-    private final String DEFAULT_CSSCODE = "9180";
-
     public IntegrationServiceImpl() {
-
     }
 
-    @Override
-    public StateResponse getState(StateRequest req) {
-        StateResponse response = new StateResponse();
-        response.setStatus(true);
 
-        StateResponse.StateResult result = new StateResponse.StateResult();
-        result.setState_Code("06");
-        result.setState_Name("CHANDIGARH");
-        result.setShort_Name("CG");
-        result.setLGD_State_Code("4");
-        result.setLGD_state_name("CHANDIGARH");
-        result.setSt_local_name("CHANDIGARH");
 
-        response.setResult(List.of(result));
-        return response;
-    }
-
-    @Override
-    public SnaDetailsResponse getSnaDetails(SnaDetailsRequest req) {
-        SnaDetailsResponse response = new SnaDetailsResponse();
-        SnaDetailsResponse.SnaDtl detail = new SnaDetailsResponse.SnaDtl();
-
-        // Example data (you can later replace with DB calls)
-        detail.setSLSCODE("RJ89");
-        detail.setVILLAGECODE(null);
-        detail.setCITYNAME(null);
-        detail.setDEPT_NAME("Rural Development and Panchayati Raj Department, Jaipur");
-        detail.setSTATEBASR("40");
-        detail.setACCOUNT_TYPE(null);
-        detail.setCSSCODE(req.getCSSSCHEME());
-        detail.setBLOCKCODE(null);
-        detail.setIPSCODE(null);
-        detail.setSNA("Y");
-
-        detail.setSNAUNIQUEAGENCYCODE("RAJJAY");
-        detail.setSTATE("RAJASTHAN");
-        detail.setDISTRICTNAME(null);
-        detail.setPROJECT("Pradhan Mantri Awas Yojana Gramin");
-        detail.setSCHEMENAME("Pradhan Mantri Awas Yojana Gramin");
-        detail.setSNACODE("001");
-        detail.setSNAACCOUNTCODE("156620123");
-        detail.setCENTERSHARE("60");
-        detail.setSNATYPE("SNA");
-        detail.setSCHEMETYPE("Gramin");
-        detail.setDISTRICTCODE(null);
-        detail.setCENTERBUDGETHEAD(null);
-
-        response.setSnaDtl(List.of(detail));
-        return response;
-    }
-
-    @Override
-    public AgencyMappingResponse getAgencyMapping(AgencyMappingRequest req) {
-        AgencyMappingResponse response = new AgencyMappingResponse();
-        AgencyMappingResponse.AgencyDtl detail = new AgencyMappingResponse.AgencyDtl();
-
-        detail.setStatus("Active");
-        detail.setSLSCODE(req.getSLSCODE());
-        detail.setNREGAPanchayatCode("NA");
-        detail.setStateLGDCode("8");
-        detail.setStateShortCode(req.getSLSCODE());
-        detail.setAgencyType("SNA");
-        detail.setChildAgencyName("Rural Development & Panchayati Raj Department");
-        detail.setParentAgencyName(null);
-        detail.setNREGABankCode("NA");
-        detail.setDDOCODE("312789");
-        detail.setEntryDate("2025-03-10T11:18:09");
-        detail.setTreasuryCode("57000");
-        detail.setChildAgencyCode("RAJJAY");
-        detail.setDistrictLGDCode(null);
-        detail.setPanchayatLGDCode(null);
-        detail.setCenterStateCode("9180");
-        detail.setNREGABankCode2("NA");
-        detail.setDEPT_NAME("SUPERINTENDING ENGINEER RURAL DEVELOPMENT (" + req.getSLSCODE() + ")");
-        detail.setBlockLGDCode("NA");
-        detail.setRequestType("R");
-
-        response.setAgencyDtl(List.of(detail));
-        return response;
-    }
-
-    @Override
-    public DeductionResponse getDeduction(DeductionRequest req) {
-        DeductionResponse response = new DeductionResponse();
-        DeductionResponse.Result result = new DeductionResponse.Result();
-
-        List<DeductionResponse.DedDtl> list = List.of(
-                new DeductionResponse.DedDtl("PATRAKAR KALYAN KOSH", "OTH/BT", "OTH", "BT", 8),
-                new DeductionResponse.DedDtl("IncomeTax", "IT/BT", "IT", "BT", 8),
-                new DeductionResponse.DedDtl("State GST", "SGST/BT", "SGST", "BT", 8));
-
-        result.setDedDtl(list);
-        response.setResult(result);
-
-        return response;
-    }
 
     @Override
     public ComponentResponse getComponents(ComponentRequest req) {
@@ -138,7 +45,6 @@ public class IntegrationServiceImpl implements IntegrationService {
     public DdoAllotmentResponse getDdoAllotmentDetails(DdoAllotmentRequest req) {
         DdoAllotmentResponse response = new DdoAllotmentResponse();
         response.setStatus(true);
-
         response.setResult(List.of(
                 new DdoAllotmentResponse.Result(
                         "SALARY",
@@ -168,7 +74,6 @@ public class IntegrationServiceImpl implements IntegrationService {
         limit.setAgencycode("RAJIAY");
         limit.setSlsCode(req.getSLSCODE());
         limit.setTreas_name("Cyber Treasury");
-
         MotherSanctionResponse.AllotmentDtl allot = new MotherSanctionResponse.AllotmentDtl();
         allot.setSNAUniqueagencycode("RAJIAY");
         allot.setMothersanctionno("Dummy");
@@ -180,7 +85,6 @@ public class IntegrationServiceImpl implements IntegrationService {
         allot.setMothersanctiondate("2025-02-10T19:27:00");
         allot.setControllercd("001");
         allot.setFin_year(2024);
-
         response.setAllotmentDtl(allot);
         return response;
     }
@@ -211,53 +115,50 @@ public class IntegrationServiceImpl implements IntegrationService {
         return e;
     }
 
-    @Override
-    public String processDscEnrollmentXml(String xml) {
-        try {
-            JAXBContext ctx = JAXBContext.newInstance(com.aparsh.api.pmay.xml.DscEnrollmentRequest.class);
-            Unmarshaller un = ctx.createUnmarshaller();
-            StringReader sr = new StringReader(xml);
-            com.aparsh.api.pmay.xml.DscEnrollmentRequest req = (com.aparsh.api.pmay.xml.DscEnrollmentRequest) un
-                    .unmarshal(sr);
-
-            // Build ack
-            com.aparsh.api.pmay.xml.DscEnrollmentAck ack = new com.aparsh.api.pmay.xml.DscEnrollmentAck();
-            ack.setStatus("SUCCESS");
-            ack.setMessage("Received DSC enrollment for " + req.getApplicantName());
-
-            JAXBContext outCtx = JAXBContext.newInstance(com.aparsh.api.pmay.xml.DscEnrollmentAck.class);
-            Marshaller m = outCtx.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            StringWriter sw = new StringWriter();
-            m.marshal(ack, sw);
-            return sw.toString();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return "<error>Invalid XML</error>";
-        }
-    }
-
-    @Override
-    public String processFtoXml(String xml) {
-        try {
-            JAXBContext ctx = JAXBContext.newInstance(com.aparsh.api.pmay.xml.FtoRequest.class);
-            Unmarshaller un = ctx.createUnmarshaller();
-            StringReader sr = new StringReader(xml);
-            com.aparsh.api.pmay.xml.FtoRequest req = (com.aparsh.api.pmay.xml.FtoRequest) un.unmarshal(sr);
-
-            com.aparsh.api.pmay.xml.FtoAck ack = new com.aparsh.api.pmay.xml.FtoAck();
-            ack.setStatus("SUCCESS");
-            ack.setMessage("FTO Received: " + req.getFtoNumber());
-
-            JAXBContext outCtx = JAXBContext.newInstance(com.aparsh.api.pmay.xml.FtoAck.class);
-            Marshaller m = outCtx.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            StringWriter sw = new StringWriter();
-            m.marshal(ack, sw);
-            return sw.toString();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return "<error>Invalid FTO XML</error>";
-        }
-    }
+//    @Override
+//    public String processDscEnrollmentXml(String xml) {
+//        try {
+//            JAXBContext ctx = JAXBContext.newInstance(DscEnrollmentRequest.class);
+//            Unmarshaller un = ctx.createUnmarshaller();
+//            StringReader sr = new StringReader(xml);
+//            DscEnrollmentRequest req = (DscEnrollmentRequest) un
+//                    .unmarshal(sr);
+//            // Build Acknowledge
+//            DscEnrollmentAck ack = new DscEnrollmentAck();
+//            ack.setStatus("SUCCESS");
+//            ack.setMessage("Received DSC enrollment for " + req.getApplicantName());
+//
+//            JAXBContext outCtx = JAXBContext.newInstance(DscEnrollmentAck.class);
+//            Marshaller m = outCtx.createMarshaller();
+//            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            StringWriter sw = new StringWriter();
+//            m.marshal(ack, sw);
+//            return sw.toString();
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return "<error>Invalid XML</error>";
+//        }
+//    }
+//
+//    @Override
+//    public String processFtoXml(String xml) {
+//        try {
+//            JAXBContext ctx = JAXBContext.newInstance(FtoRequest.class);
+//            Unmarshaller un = ctx.createUnmarshaller();
+//            StringReader sr = new StringReader(xml);
+//            FtoRequest req = (FtoRequest) un.unmarshal(sr);
+//            FtoAck ack = new FtoAck();
+//            ack.setStatus("SUCCESS");
+//            ack.setMessage("FTO Received: " + req.getFtoNumber());
+//            JAXBContext outCtx = JAXBContext.newInstance(FtoAck.class);
+//            Marshaller m = outCtx.createMarshaller();
+//            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            StringWriter sw = new StringWriter();
+//            m.marshal(ack, sw);
+//            return sw.toString();
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return "<error>Invalid FTO XML</error>";
+//        }
+//    }
 }
