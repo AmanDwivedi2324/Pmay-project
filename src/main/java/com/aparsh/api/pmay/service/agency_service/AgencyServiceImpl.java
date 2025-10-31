@@ -24,7 +24,10 @@ public class AgencyServiceImpl implements AgencyService {
         }
         List<AgencyEntity> entities = repo.findBySlsCode(slsCode.trim());
         if (entities == null || entities.isEmpty()) {
-            try { entities = repo.findBySlsCodeNative(slsCode.trim()); } catch (Exception ignored) {}
+            try {
+                entities = repo.findBySlsCodeNative(slsCode.trim());
+            } catch (Exception ignored) {
+            }
         }
 
         var dtls = entities.stream().map(e -> {
